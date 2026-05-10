@@ -14,9 +14,10 @@ Facepunch'ın resmi egg'i hostname ve description gibi kullanıcı-input alanlar
 
 Bu egg yerine **Pelican `config.files` parser**'ı ile `server/rust/cfg/server.cfg` dosyasına yazıyor:
 
-- Hostname, description, URL, header image, logo image, level, worldsize, seed, tags artık CLI'dan değil cfg'den okunuyor.
+- Hostname, description, URL, header image, logo image, level, worldsize, seed, tags, **levelurl** (custom map URL) artık CLI'dan değil cfg'den okunuyor.
 - Cfg dosyası shell parser'ından geçmiyor → kullanıcı her özel karakteri yazsa sorunsuz boot.
 - Rust dedicated server `server.cfg`'yi CLI'a tercih eder (Facepunch wiki).
+- Upstream'in `MAP_URL` koşullu CLI argümanı (`$( [ -z ${MAP_URL} ] && ... )`) kaldırıldı; aynı işlevsellik `server.levelurl` cfg satırından sağlanıyor (boş URL = procedural map).
 
 İlgili upstream issue'lar:
 - [pelican-dev/wings#74](https://github.com/pelican-dev/wings/issues/74) — `|` karakteri startup'ı kırıyor
